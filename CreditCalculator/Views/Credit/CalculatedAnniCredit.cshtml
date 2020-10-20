@@ -1,0 +1,46 @@
+﻿@model CreditCalculator.Models.CalculatedAnniCredit
+
+<div class="my-3">
+    <a href="javascript:history.back()">Вернуться</a>
+</div>
+<div>
+    <h4>Информация о кредите</h4>
+    <div class="my-4">
+        <div>
+            <b>Сумма кредита: </b>@Model.CreditSum
+        </div>
+        <div>
+            <b>Сумма выплаты кредита: </b>@Model.Debt
+        </div>
+        <div>
+            <b>Размер одного платежа составляет: </b>@Model.Payment
+        </div>
+        <div>
+            <b>Переплата по кредиту: </b>@Model.OverPayment
+        </div>
+    </div>
+</div>
+<h4>График платежей</h4>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Номер платежа</th>
+                <th>Дата платежа</th>
+                <th>Размер платежа</th>
+                <th>Остаток долга</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var payment in Model.Payments)
+            {
+                <tr>
+                    <td>@payment.Number</td>
+                    <td>@payment.Date.ToShortDateString()</td>
+                    <td>@Model.Payment</td>
+                    <td>@payment.DebtBalance</td>
+                </tr>
+            }
+        </tbody>
+    </table>    
+</div>

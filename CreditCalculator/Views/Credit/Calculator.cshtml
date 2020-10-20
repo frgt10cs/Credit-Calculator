@@ -1,0 +1,75 @@
+﻿@model CreditCalculator.DTOs.Credit
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/calculator.js"></script>
+@await Html.PartialAsync("_ValidationScriptsPartial")
+
+<link rel="stylesheet" type="text/css" href="~/css/calculator.css" />
+
+<div class="text-center">
+    <h1 class="display-4">Кредитный калькулятор</h1>
+    <p>Расчитать кредит с графиком платежей</p>
+</div>
+<div class="mt-4">
+    <form class="form w-100" asp-controller="Credit" asp-action="Calculator">
+        <div class="row my-2">
+            <div class="col text-right">
+                <label for="@Model.CreditType">Тип кредита:</label>
+            </div>
+            <div class="col">
+                <div><input type="radio" name="creditType" asp-for="@Model.CreditType" value="0" /> Дифферецниальный</div>
+                <div><input type="radio" name="creditType" asp-for="@Model.CreditType" value="1" /> Аннуитетный</div>
+                <span asp-validation-for="@Model.CreditType"></span>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col text-right">
+                <label for="@Model.Sum">Сумма кредита:</label>
+            </div>
+            <div class="col">
+                <input asp-for="@Model.Sum" />
+                <span asp-validation-for="@Model.Sum"></span>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col text-right">
+                <label for="@Model.RateMode">Ставка <span id="rateInfo"></span>:</label>
+            </div>
+            <div class="col">
+                <div><input type="radio" name="rateMode" asp-for="@Model.RateMode" value="0" /> В год</div>
+                <div><input type="radio" name="rateMode" asp-for="@Model.RateMode" value="1" /> В день</div>
+                <span asp-validation-for="@Model.RateMode"></span>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col text-right">
+                <label for="@Model.Rate">Размер ставки:</label>
+            </div>
+            <div class="col">
+                <input asp-for="@Model.Rate" />
+                <span asp-validation-for="@Model.Rate"></span>
+            </div>
+        </div>
+        <div class="row my-2">
+            <div class="col text-right">
+                <label for="@Model.Term">Срок кредита <span id="termInfo"></span>:</label>
+            </div>
+            <div class="col">
+                <input asp-for="@Model.Term" />
+                <span asp-validation-for="@Model.Term"></span>
+            </div>
+        </div>
+        <div id="creditStepContainer" class="row my-2 none">
+            <div class="col text-right">
+                <label for="@Model.Step">Шаг платежа в днях:</label>
+            </div>
+            <div class="col">
+                <input asp-for="@Model.Step" />
+                <span asp-validation-for="@Model.Step"></span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+            <button type="submit" class="btn btn-primary">Рассчитать</button>
+        </div>        
+    </form>
+</div>
