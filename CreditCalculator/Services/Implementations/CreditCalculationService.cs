@@ -22,7 +22,7 @@ namespace CreditCalculator.Services.Implementations
                 CreditSum = credit.Sum
             };
 
-            var paymentDate = DateTime.Now.AddMonths(-4);
+            var paymentDate = DateTime.Now;
             for (uint i = 0; i < credit.Term / step; i++)
             {
                 paymentDate = credit.RateMode == RateMode.Month ?
