@@ -33,7 +33,7 @@
         </div>
         <div class="row my-2">
             <div class="col text-right">
-                <label for="@Model.RateMode">Ставка <span id="rateInfo"></span>:</label>
+                <label for="@Model.RateMode">Ставка кредита:</label>
             </div>
             <div class="col">
                 <div><input type="radio" name="rateMode" asp-for="@Model.RateMode" value="0" /> В год</div>
@@ -43,7 +43,7 @@
         </div>
         <div class="row my-2">
             <div class="col text-right">
-                <label for="@Model.Rate">Размер ставки:</label>
+                <label for="@Model.Rate">Размер ставки <span id="rateInfo"></span>:</label>
             </div>
             <div class="col">
                 <input asp-for="@Model.Rate" />
